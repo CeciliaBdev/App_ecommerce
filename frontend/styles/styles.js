@@ -9,7 +9,7 @@ export const colors = {
     color4: "transparent",
     color5: "#f2f2f2",
     color6: "#f7f7f7",
-    color7: "purple"
+    color7: "purple" //violet
   };
 
 export const defaultStyle = StyleSheet.create({
@@ -29,13 +29,41 @@ export const inputStyling = StyleSheet.create({
 //rond avatar de l'icone
 export const IconAvatar = StyleSheet.create({
   height: 50,
+  backgroundColor: colors.color2,
+  width: 50,
+  borderRadius: 50, 
+  position:"absolute",
+  left:20,
+  top:40,
+  zIndex:10   
+});
+//left
+export const AvatarLeft = StyleSheet.create({
+  height: 50,
   backgroundColor: colors.color7,
   width: 50,
-  borderRadius: 50,    
+  borderRadius: 50, 
+  position:"absolute",
+  right:20,
+  top:40,
+  zIndex:10   
+});
+//search avatar icone
+export const AvatarSearch = StyleSheet.create({
+  height: 50,
+  backgroundColor: colors.color2,
+  width: 50,
+  borderRadius: 50, 
+  zIndex:10,
+  shadowColor: '#171717',
+  shadowOffset: {width: 0, height: 0},
+  shadowOpacity: 0.4,
+  shadowRadius: 6,
 });
 //icone
 export const Icon = StyleSheet.create({
   lineHeight:50,
   textAlign:'center',
-  fontSize: 30
+  fontSize: 30,
+  color:"white",
 });
