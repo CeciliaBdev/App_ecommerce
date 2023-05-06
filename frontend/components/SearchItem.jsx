@@ -8,7 +8,7 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
         style={{
           padding: 30,
           borderRadius: 10,
-          backgroundColor: colors.color,
+          backgroundColor: colors.color2,
         //   width: "100%",
           alignItems: "center",
           justifyContent: "flex-end",
@@ -32,8 +32,6 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
             top: 0,
             // top:-15,
             left: 10,
-            borderTopLeftRadius: 20,
-            borderBottomRightRadius: 20,
           }}
         />
   
@@ -45,7 +43,7 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
               fontWeight: "900",
             }}
           >
-            ₹{price}
+            {price}€
           </Text>
           {/* Headline a remplacer par un autre composant  => par un Text */}
         </View>

@@ -1,10 +1,13 @@
-import { View, Text, TouchableOpacity, Pressable, Button, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, Pressable, ScrollView } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import React, { useState} from 'react'
+// import { useDispatch } from "react-redux";
 import { defaultStyle, AvatarSearch, Icon } from '../styles/styles'
 import Header from '../components/Header'
 import SearchModal from '../components/SearchModal'
+import ProductCard from '../components/ProductCard'
 import { colors } from '../styles/styles'
+import { useNavigation } from '@react-navigation/native'
 
 const Home = () => {
 
@@ -21,8 +24,20 @@ const Home = () => {
   const products = [
     {
       price: 234,
-      name:'name test',
+      name:'test 1',
       _id: "324562",
+      stock:23,
+      images: [
+        {
+          url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
+        }
+      ]
+    },
+    {
+      price: 534,
+      name:'test 2',
+      _id: "327862",
+      stock:23,
       images: [
         {
           url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
@@ -30,10 +45,17 @@ const Home = () => {
       ]
     }
   ]
+  const navigate = useNavigation();
 
   const categoryButtonHandler = (id) => {
     setCategory(id)
   }
+
+  const addToCardHandler = (id) => {
+    console.log("add to cart",id)
+
+  };
+  
 
   return (
   
@@ -106,7 +128,23 @@ const Home = () => {
       </View>
 
       {/* Products */}
-      
+      <View style={{ flex: 1 }}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {products.map((item, index) => (
+              <ProductCard
+                stock={item.stock}
+                name={item.name}
+                price={item.price}
+                image={item.images[0]?.url}
+                addToCardHandler={addToCardHandler}
+                id={item._id}
+                key={item._id}
+                i={index}
+                navigate={navigate}
+              />
+            ))}
+          </ScrollView>
+        </View>
     </View>
     </>
   )
