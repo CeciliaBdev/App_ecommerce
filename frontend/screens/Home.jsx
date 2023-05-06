@@ -3,6 +3,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import React, { useState} from 'react'
 import { defaultStyle, AvatarSearch, Icon } from '../styles/styles'
 import Header from '../components/Header'
+import SearchModal from '../components/SearchModal'
 import { colors } from '../styles/styles'
 
 const Home = () => {
@@ -15,14 +16,40 @@ const Home = () => {
 
 ]
   const [category, setCategory] = useState("");
+  const [activeSearch, setActiveSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const products = [
+    {
+      price: 234,
+      name:'name test',
+      _id: "324562",
+      images: [
+        {
+          url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
+        }
+      ]
+    }
+  ]
 
   const categoryButtonHandler = (id) => {
     setCategory(id)
   }
 
   return (
-    // spreadoperator  => on reprend le style et on ajoute le flex: ajuste la taille du header
-    //<View style={{...defaultStyle, flex:0}}>
+  
+    <>
+        {
+          activeSearch && (
+            <SearchModal 
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              setActiveSearch={setActiveSearch}
+              products={products}
+            />
+          )
+        }
+    {/* // spreadoperator  => on reprend le style et on ajoute le flex: ajuste la taille du header */}
+    {/* //<View style={{...defaultStyle, flex:0}}></View> */}
     <View style={defaultStyle}>
       {/* Header */}
       <Header />
@@ -41,8 +68,8 @@ const Home = () => {
           </View>
 
         {/* Search bar */}
-        <View>
-        <TouchableOpacity style={AvatarSearch} >
+        <View >
+        <TouchableOpacity style={AvatarSearch} onPress={() => setActiveSearch((prev) =>(!prev))}>
             <MaterialIcons name="search" style={{...Icon,color:'grey',  }  }     />
           </TouchableOpacity>
         </View>
@@ -79,7 +106,9 @@ const Home = () => {
       </View>
 
       {/* Products */}
+      
     </View>
+    </>
   )
 }
 
