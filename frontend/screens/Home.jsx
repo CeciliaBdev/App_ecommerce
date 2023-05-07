@@ -2,12 +2,12 @@ import { View, Text, TouchableOpacity, Pressable, ScrollView } from 'react-nativ
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import React, { useState} from 'react'
 // import { useDispatch } from "react-redux";
-import { defaultStyle, AvatarSearch, Icon } from '../styles/styles'
+import { defaultStyle, AvatarSearch, Icon, colors } from '../styles/styles'
 import Header from '../components/Header'
 import SearchModal from '../components/SearchModal'
 import ProductCard from '../components/ProductCard'
-import { colors } from '../styles/styles'
 import { useNavigation } from '@react-navigation/native'
+import Footer from '../components/Footer'
 
 const Home = () => {
 
@@ -144,8 +144,10 @@ const Home = () => {
               />
             ))}
           </ScrollView>
-        </View>
+        </View>   
     </View>
+
+    <Footer activeRoute={'home'}/>
     </>
   )
 }

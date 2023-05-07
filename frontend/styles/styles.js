@@ -67,3 +67,10 @@ export const Icon = StyleSheet.create({
   fontSize: 30,
   color:"white",
 });
+//footer icon
+export const avatarOptions = {
+  color: colors.color2,
+  fontSize: 40,
+  padding:5,
+  backgroundColor: colors.color1
+};

@@ -13,7 +13,7 @@ const ProductCard = ({ stock, name, price, image, id, addToCardHandler, i, navig
                 justifyContent: "space-between",
                 margin: 20,
                 borderRadius: 20,
-                height: 350,
+                height: 300,
                 //impair ou pair = couleur differente
                 backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2,
                 borderColor:'lightgrey',
@@ -26,12 +26,12 @@ const ProductCard = ({ stock, name, price, image, id, addToCardHandler, i, navig
                      uri: image,
                     }}
                     style={{
-                        width: "100%",
+                        width: "80%",
                         height: 200,
                         resizeMode: "contain",
                         position: "absolute",
                         left: 50,
-                        top: 105,
+                        top: 50,
                     }}
                 />
                 
