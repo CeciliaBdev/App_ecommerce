@@ -40,7 +40,7 @@ export const IconAvatar = StyleSheet.create({
 //left
 export const AvatarLeft = StyleSheet.create({
   height: 50,
-  backgroundColor: colors.color7,
+  backgroundColor: colors.color1,
   width: 50,
   borderRadius: 50, 
   position:"absolute",

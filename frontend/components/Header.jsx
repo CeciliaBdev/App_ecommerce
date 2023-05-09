@@ -19,7 +19,7 @@ const Header = ({back, emptyCart=false}) => {
     {
       back && (
         <TouchableOpacity style={IconAvatar} onPress={() => navigate.goBack() }>
-          <MaterialIcons name="arrow-back" color={route.name==="productdetails" ? colors.color2 : colors.color3 }  style={Icon}   />
+          <MaterialIcons name="arrow-back" color={route.name==="productdetails" ? colors.color2 : colors.color3 }  style={{...Icon, color:colors.color1}}   />
         </TouchableOpacity>
       )
     }
