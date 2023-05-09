@@ -11,14 +11,33 @@ import {
 import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
 import Carousel from 'react-native-snap-carousel'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
 const ProductDetails = () => {
 
-    
+    const name = 'Test name';
+    const price = 245;
+    const stock = 5;
+    const description = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, molestiae. Nostrum, quas, tenetur, similique nulla soluta provident suscipit laudantium quod quos ad vero minus`
+
     const isCarousel = useRef(null);
+
+    //fonction des boutons incrementQty et decrementQty
+    // states des boutons + et -
+    const [quantity, setQuantity] = useState(1)
+    const incrementQty = () => {
+        // si stock atteint
+        if (stock <= quantity) return
+        setQuantity((prev) => prev + 1)
+    }
+    const decrementQty = () => {
+        if (quantity <= 1) return
+        // pour pas descendre sous 1
+        setQuantity((prev) => prev - 1)
+    }
 
     const images = [
         {
@@ -44,6 +63,38 @@ const ProductDetails = () => {
         data={images}
         renderItem={CarouselCardItem}
       />
+      {/* revoir marginTop si besoin d'ajustement */}
+       <View style={{ backgroundColor: colors.color2, padding:35, flex:1, marginTop:-280,borderTopLeftRadius: 55,
+          borderTopRightRadius: 55, }}>
+            <Text numberOfLines={2} style={{ fontSize: 25,}}>{name}</Text>
+            <Text style={{fontSize: 18,fontWeight: "900",}}>{price}€</Text>
+            <Text style={{letterSpacing: 1,lineHeight: 20,marginVertical: 15, textAlign:"justify"}}numberOfLines={8}>{description}</Text>
+
+            <View style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            paddingHorizontal: 5,
+          }}>
+                <Text style={{color: colors.color3,fontWeight: "200",}}>Quantity</Text>
+                <View style={{
+              width: 80,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}>
+                {/* on peut personnaliser les boutons  */}
+                    <TouchableOpacity onPress={decrementQty} >
+                        <MaterialIcons name="remove-circle-outline" size={20} style={{ color:colors.color1}} />
+                    </TouchableOpacity>
+                        <Text >{quantity}</Text>
+                    <TouchableOpacity onPress={incrementQty}>
+                        <MaterialIcons name="add-circle-outline" size={20} style={{ color:colors.color1}}/>
+                    </TouchableOpacity>
+            </View>
+            </View>
+
+      </View>
     </View>
   )
 }
@@ -54,6 +105,7 @@ const CarouselCardItem = ({ item, index }) => (
       <Image source={ {uri : item.url} } style={style.image} />
       {/* si on utilise le chemin (require) */}
       {/* <Image source={ item.source } style={style.image} /> */}
+
     </View>
   );
 
@@ -68,7 +120,7 @@ const CarouselCardItem = ({ item, index }) => (
     image: {
       width: ITEM_WIDTH,
       resizeMode: "contain",
-      height: 250,
+      height: 200,
     },
 })
 
