@@ -6,12 +6,14 @@ import {
     Image,
     StyleSheet,
     TouchableOpacity,
+    Pressable
   } from "react-native";
   import React, { useEffect, useRef, useState } from "react";
 import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
 import Carousel from 'react-native-snap-carousel'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
@@ -20,7 +22,7 @@ const ProductDetails = () => {
 
     const name = 'Test name';
     const price = 245;
-    const stock = 5;
+    const stock = 4;
     const description = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, molestiae. Nostrum, quas, tenetur, similique nulla soluta provident suscipit laudantium quod quos ad vero minus`
 
     const isCarousel = useRef(null);
@@ -39,6 +41,18 @@ const ProductDetails = () => {
         setQuantity((prev) => prev - 1)
     }
 
+    //function ajout via le bouton add
+    const addToCardHandler = () => {
+        if (stock === 0) return Toast.show({
+            type:"error",
+            text1:"Out of stock",
+            // text2:" le texte 2"
+        })
+        Toast.show({
+            type:"success",
+            text1:` ${quantity} Added to cart`,
+        })
+    }
     const images = [
         {
             id: 'deee',
@@ -91,9 +105,23 @@ const ProductDetails = () => {
                     <TouchableOpacity onPress={incrementQty}>
                         <MaterialIcons name="add-circle-outline" size={20} style={{ color:colors.color1}}/>
                     </TouchableOpacity>
+                </View>
             </View>
+            <View style={{ flex:1, flexDirection: "row", justifyContent:'center', margin: 20 }}>
+              
+                <Pressable style={({pressed}) => [
+                    //chgmt background si button pressé
+                        { backgroundColor: pressed ? colors.color1 : 'white',},style.button,
+                        ]}
+                    // fct ajout au panier au press
+                        onPress={addToCardHandler}>
+                    <MaterialIcons name="shopping-cart" size={20}/> 
+                    <Text>Add</Text>
+                </Pressable>
+                
             </View>
-
+            
+        
       </View>
     </View>
   )
@@ -122,6 +150,20 @@ const CarouselCardItem = ({ item, index }) => (
       resizeMode: "contain",
       height: 200,
     },
+    button:{
+        height:40, 
+        borderWidth:1,
+        width: '100%',
+        borderRadius:15, 
+        justifyContent:'center', 
+        alignItems:'center', 
+        borderColor:'lightgrey',
+        shadowColor: '#171717',
+        shadowOpacity: 0.2,
+        // backgroundColor:'white',
+        flexDirection:'row', 
+        gap:10,
+    }
 })
 
 export default ProductDetails
