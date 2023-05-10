@@ -7,7 +7,7 @@ export const colors = {
     color2: "white",
     color3: "rgb(45,45,45)",
     color4: "transparent",
-    color5: "#f2f2f2",
+    color5: "#f2f2f2", //
     color6: "#f7f7f7",
     color7: "purple" //violet
   };
