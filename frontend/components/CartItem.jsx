@@ -3,7 +3,7 @@ import React from 'react'
 import { colors } from '../styles/styles'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-const CartItem = ({name, amount, qty, stock, index, imgSrc, id, decrementHandler, incrementHandler}) => {
+const CartItem = ({name, amount, qty, stock, index, imgSrc, id, decrementHandler, incrementHandler, navigate}) => {
   return (
     <View style={{
         flexDirection:'row',
@@ -34,7 +34,9 @@ const CartItem = ({name, amount, qty, stock, index, imgSrc, id, decrementHandler
             }}>
                 <Text numberOfLines={1} style={{
                     fontSize:17,
-                }}>{name}</Text>
+                }}
+                //rajout de la navigation vers la page du produits
+                onPress={() => navigate.navigate("productdetails", {id})}>{name}</Text>
                 <Text numberOfLines={1} style={{
                     fontSize:17,fontWeight:900
                 }}>{amount}€</Text>

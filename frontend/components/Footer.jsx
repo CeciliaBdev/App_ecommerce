@@ -11,7 +11,7 @@ const Footer = ({ activeRoute = 'home'}) => {
     // montrer le footer si user connecté (pour la database)
     const loading = false
 
-    const isAuthenticated = true;
+    const isAuthenticated = false;
 
     //navigation au click des icones du footer
     const navigationHandler = (key) =>{
