@@ -11,7 +11,7 @@ const Footer = ({ activeRoute = 'home'}) => {
     // montrer le footer si user connecté (pour la database)
     const loading = false
 
-    const isAuthenticated = false;
+    const isAuthenticated = true;
 
     //navigation au click des icones du footer
     const navigationHandler = (key) =>{
@@ -77,7 +77,10 @@ const Footer = ({ activeRoute = 'home'}) => {
             onPress={() => navigationHandler(2)}
           >
             {
-                activeRoute === "profile"  ?
+              //ssi pas connecté => icone de login
+              isAuthenticated === false
+              ? <MaterialIcons name="login" style={avatarOptions}/> 
+              :  activeRoute === "profile"  ?
                 <MaterialIcons name="person" style={avatarOptions}/> :
                 <MaterialIcons name="person-outline" style={avatarOptions}/>
             }
