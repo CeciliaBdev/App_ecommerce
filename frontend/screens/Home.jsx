@@ -9,6 +9,33 @@ import ProductCard from '../components/ProductCard'
 import { useNavigation } from '@react-navigation/native'
 import Footer from '../components/Footer'
 
+export const products = [
+  {
+    price: 234,
+    name:'test 1',
+    _id: "324562",
+    stock:23,
+    category:'category1',
+    images: [
+      {
+        url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
+      }
+    ]
+  },
+  {
+    price: 534,
+    name:'test 2',
+    _id: "327862",
+    stock:5,
+    category:'category2',
+    images: [
+      {
+        url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
+      }
+    ]
+  },
+  
+];
 const Home = () => {
 
   const categories = [
@@ -21,30 +48,8 @@ const Home = () => {
   const [category, setCategory] = useState("");
   const [activeSearch, setActiveSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const products = [
-    {
-      price: 234,
-      name:'test 1',
-      _id: "324562",
-      stock:23,
-      images: [
-        {
-          url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
-        }
-      ]
-    },
-    {
-      price: 534,
-      name:'test 2',
-      _id: "327862",
-      stock:23,
-      images: [
-        {
-          url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"
-        }
-      ]
-    }
-  ]
+
+  
   const navigate = useNavigation();
 
   const categoryButtonHandler = (id) => {
