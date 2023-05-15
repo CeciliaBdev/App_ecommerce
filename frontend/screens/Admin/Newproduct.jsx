@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import {
     colors,
@@ -9,28 +9,14 @@ import {
   } from "../../styles/styles";
   import Header from "../../components/Header";
   import Loader from "../../components/Loader";
-import { Button, TextInput } from 'react-native-paper';
+import { Button, TextInput, Avatar } from 'react-native-paper';
 import SelectComponent from '../../components/SelectComponent';
 
-const UpdateProduct = ({navigation, route}) => {
+const NewProduct = ({navigation, route}) => {
 
     const loading = false;
-    const loadingOther = false;
-    // console.log(route.params)
-    //   resultat : {"key": "updateproduct-s4h-dbjnkJVElqkroxZAn", "name": "updateproduct", "params": {"id": "324562"}, "path": undefined}
-
-    const images = [{
-        _id:"ddfff",
-        url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg", 
-    },
-    {
-        _id:"aaaff",
-        url:"https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg", 
-    }
-
-    ]
-
-    const [id] = useState(route.params.id)
+   
+    const [image, setImage] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
@@ -66,7 +52,7 @@ const UpdateProduct = ({navigation, route}) => {
         <Header back={true} />
 
         <View style={{ marginBottom: 20, paddingTop: 70 }}>
-        <Text style={formHeading}>Update product</Text>
+        <Text style={formHeading}>New product</Text>
 
         </View>
         {
@@ -86,12 +72,42 @@ const UpdateProduct = ({navigation, route}) => {
                     height: 650,
                 }}
                 >
-                    <Button onPress={() => navigation.navigate("productimages", {
-                        id, 
-                        images:images,
-
-                    })}  textColor={colors.color1}>Manage Images</Button>
-
+                     <View
+              style={{
+                width: 80,
+                height: 80,
+                alignSelf: "center",
+                marginBottom: 20,
+              }}
+            >
+              <Avatar.Image
+                size={80}
+                style={{
+                  backgroundColor: colors.color1,
+                }}
+                source={{
+                  uri: image ? image : null,
+                }}
+              />
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("camera", { newProduct: true })
+                }
+              >
+                <Avatar.Icon
+                  icon={"camera"}
+                  size={30}
+                  color={colors.color3}
+                  style={{
+                    backgroundColor: colors.color2,
+                    position: "absolute",
+                    bottom: 0,
+                    right: -5,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+                   
                     <TextInput
                                 {...inputOptions}
                                 placeholder="Name"
@@ -138,10 +154,10 @@ const UpdateProduct = ({navigation, route}) => {
                     padding: 6,
                     }}
                     onPress={submitHandler}
-                    loading={loadingOther}
-                    disabled={loadingOther}
+                    loading={loading}
+                    disabled={loading}
                 >
-                    Update
+                    Create
                 </Button>
 
 
@@ -163,4 +179,4 @@ const UpdateProduct = ({navigation, route}) => {
   )
 }
 
-export default UpdateProduct
+export default NewProduct

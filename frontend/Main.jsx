@@ -20,6 +20,9 @@ import AdminPanel from './screens/Admin/AdminPanel'
 import Categories from './screens/Admin/Categories'
 import AdminOrders from './screens/Admin/AdminOrders'
 import UpdateProduct from './screens/Admin/UpdateProduct'
+import Newproduct from './screens/Admin/Newproduct'
+import ProductImages from './screens/Admin/ProductImages'
+import Camera from './screens/Camera'
 
 
 const Stack = createNativeStackNavigator()
@@ -40,6 +43,7 @@ const Main = () => {
           <Stack.Screen name="updateprofile" component={UpdateProfile}/>
           <Stack.Screen name="changepassword" component={ChangePassword}/>
           <Stack.Screen name="orders" component={Orders}/>
+          <Stack.Screen name="camera" component={Camera}/>
 
           {/* password reset route */}
           <Stack.Screen name="forgetpassword" component={ForgetPassword}/>
@@ -50,6 +54,9 @@ const Main = () => {
           <Stack.Screen name="categories" component={Categories}/>
           <Stack.Screen name="adminorders" component={AdminOrders}/>
           <Stack.Screen name="updateproduct" component={UpdateProduct}/>
+          <Stack.Screen name="newproduct" component={Newproduct}/>
+          <Stack.Screen name="productimages" component={ProductImages}/>
+          {/* Product image remaining */}
 
         </Stack.Group>
       </Stack.Navigator>

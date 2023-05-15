@@ -13,7 +13,10 @@ const SelectComponent = ({
     categories=[]
 }) => {
     const selectCategoryHandler = (item) => {
-        console.log(item)
+        // console.log(item)
+        setCategory(item.category)
+        setCategoryID(item._id) //modifie la categorieID
+        setVisible(false) //ferme la fenetre (plus visible)
     }
   return (
     visible && (
